@@ -44,7 +44,7 @@ if (status === "parent") {
 
   }
 
-console.log(date, 'Day of Goodwill');
+  console.log(date, 'Day of Goodwill');
   count += 1;
 }
 
