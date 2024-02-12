@@ -17,3 +17,5 @@ if (hourOfDay == 0 && minuteOfDay == 0){
     console.log(undefined)
 }
 console.log('R' + balance.toFixed(2));
+
+// testing Git hub
