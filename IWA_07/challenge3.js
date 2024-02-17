@@ -31,7 +31,6 @@ if (sarahName, sarahSurname){
 }
 
 console.log(divider);
-console.log("\n");
 console.log(total, thousand, hundred.toFixed(1));
 console.log(divider);
 
