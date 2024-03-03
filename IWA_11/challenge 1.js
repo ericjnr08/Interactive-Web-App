@@ -1,32 +1,60 @@
-const order1Root = document.querySelector('[data-key = "order1"]');
-const order1Biscuits = document.querySelector('[data-biscuits ="10"}');
-const order1Donuts = document.querySelector('[data-donuts ="13"]');
-const order1Pancakes= document.querySelector('[data-pancakes ="0"]');
-const order1Status = document.querySelector('status');
+// order 1
+//----------------------------------------------------------------------------//
+const html = {
+    order: {
+        1: {
+            root: document.querySelector('[data-key="order1"]'),
+            biscuits: document.querySelector('[data-key="order1"] .biscuits .count'),
+            donuts: document.querySelector('[data-key="order1"] .donuts .count'),
+            pancakes: document.querySelector('[data-key="order1"] .pancakes .count'),
+            status: document.querySelector('[data-key="order1"] .status dd')
+        }
+    }
+};
 
-order1Biscuits = order1Root.dataset.biscuits;
-order1Donuts = order1Root.dataset.donuts;
-order1Pancakes = order1Root.dataset.pancakes;
+html.orders[1].biscuits.innerText = data[1].biscuits
+html.order[1].donuts.innerText = data[1].donuts
+html.order[1].pancakes.innerText = data[1].pancakes
 order1Status = order1Root.dataset.Delivered === "true" ? "Delivered" : "Pending";
+//----------------------------------------------------------------------------//
 
-const order2Root = document.querySelector('[data-key = "order1"]');
-const order2Biscuits = document.querySelector('[data-biscuits = "10"}');
-const order2Donuts = document.querySelector('[data-donuts = "13"]');
-const order2Pancakes= document.querySelector('[data-pancakes = "0"]');
-const order2Status = document.querySelector('status');
+//order 2
+//----------------------------------------------------------------------------//
+const html = {
+    order: {
+        2: {
+            root: document.querySelector('[data-key="order2"]'),
+            biscuits: document.querySelector('[data-key="order2"] .biscuits .count'),
+            donuts: document.querySelector('[data-key="order2"] .donuts .count'),
+            pancakes: document.querySelector('[data-key="order2"] .pancakes .count'),
+            status: document.querySelector('[data-key="order2"] .status dd')
+        }
+    }
+};
 
-order2Biscuits = order2Root.dataset.biscuits;
-order2Donuts = order2Root.dataset.donuts;
-order2Pancakes = order2Root.dataset.pancakes;
-order2Status = order2Root.dataset.Delivered === "true" ? "Delivered" : "Pending";
+html.orders[2].biscuits.innerText = data[2].biscuits
+html.order[2].donuts.innerText = data[2].donuts
+html.order[2].pancakes.innerText = data[2].pancakes
+order2Status = order2Root.dataset.delivered === "true" ? "delivered" : "Pending";
+//----------------------------------------------------------------------------//
 
-const order3Root = document.querySelector('[data-key = "order1"]');
-const order3Biscuits = document.querySelector('[data-biscuits = "10"}');
-const order3Donuts = document.querySelector('[data-donuts = "13"]');
-const order3Pancakes= document.querySelector('[data-pancakes = "0"]');
-const order3Status = document.querySelector('status');
+//order 3
+//----------------------------------------------------------------------------//
+const html = {
+    order: {
+        3: {
+            root: document.querySelector('[data-key="order3"]'),
+            biscuits: document.querySelector('[data-key="order3"] .biscuits .count'),
+            donuts: document.querySelector('[data-key="order3"] .donuts .count'),
+            pancakes: document.querySelector('[data-key="order3"] .pancakes .count'),
+            status: document.querySelector('[data-key="order3"] .status dd')
+        }
+    }
+};
 
-order3Biscuits = order3Root.dataset.biscuits;
-order3Donuts = order3Root.dataset.donuts;
-order3Pancakes = order3Root.dataset.pancakes;
-order3Status = order3Root.dataset.Delivered === "true" ? "Delivered" : "Pending";
+html.orders[3].biscuits.innerText = data[3].biscuits
+html.order[3].donuts.innerText = data[3].donuts
+html.order[3].pancakes.innerText = data[3].pancakes
+order3Status = order3Root.dataset.delivered === "true" ? "delivered" : "Pending";
+
+//---------------------...ooo000 END OF FILE 000ooo...------------------------//
