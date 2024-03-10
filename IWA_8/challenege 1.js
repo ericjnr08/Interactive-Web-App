@@ -47,3 +47,5 @@ const sarah ={
 }
 console.log(leo, leo['address']['postalCode'])
 console.log(sarah, sarah['address']['postalCode'])
+
+//combine name and surname for Sarah
