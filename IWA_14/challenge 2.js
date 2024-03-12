@@ -8,12 +8,18 @@ function multiply(a, b) {
     return a * b; // Added the correct multiply syntax
 }
 
-function internal (a, b) {
-	const added = add(a, b);
-	const multiplied = multiply(a, b);
-	return {added, multiplied};
-}
+ function internal (a, b) {
+ 	const added = add(a, b);
+ 	const multiplied = multiply(a, b);
+ 	return {added, multiplied};
+ }
 
+//coaching update
+function internal () {
+	const added = this.add(this.internal.a, this.internal.b);
+	const multiplied = this.multiply(added, this.internal.c);
+    console.log(multiplied)
+}
 
 // Not allowed to change below this
 
