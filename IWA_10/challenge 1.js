@@ -86,8 +86,9 @@ if (isEarlier) {
 }
 
 const correctDate = new Date();
-correctDate.setHours();
-correctDate.setMinutes();
+correctDate.setHours(0);
+correctDate.setMinutes(0);
+
 
 holidays[christmas] = copied;
 
