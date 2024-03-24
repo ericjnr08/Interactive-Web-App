@@ -69,8 +69,8 @@ const MONTHS = [
   
   const createHtml = (athlete) => {
     const {firstName, surname, id, races} = athlete; //added const ass 'athlete' is being declared.
-    const reverseRaces = races.reverse();
-    const {date, time} = reverseRaces[0]; //checking from the last index
+    const {date, time} = races.at(-1)
+    // const {date, time} = reverseRaces[0]; //checking from the last index
   
   const fragment = document.createDocumentFragment(); 
   
@@ -104,13 +104,23 @@ const section = document.createElement('section');
       <dd>${day}, ${month}, ${year}</dd>
   
       <dt>Total Time (Latest)</dt>
-      <dd>${hours.padStart(2, '0')}, minutes}</dd>
+      <dd>${hours}.padStart(2,'0'): ${minutes}</dd>
     `
   
     fragment.appendChild(list);
     return fragment;
   }
+
+   const {
+        response: {
+          data: {
+            NM372,
+            SV782,
+          }
+        },
+      } = data;
   
-   ['NM372'], ['SV782'] = data
-   const athleteId = document.querySelector('NM372').appendChild(createHtml('NM372'));
-   const athleteId = document.querySelector('SV782').appendChild(createHtml('SV782'));
+    document.querySelector('[data-athlete="NM372"]').appendChild(createHtml(NM372));
+    document.querySelector('[data-athlete="SV782"]').appendChild(createHtml(SV782));
+
+   //................................................................................//
