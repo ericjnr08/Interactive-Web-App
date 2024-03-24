@@ -120,7 +120,7 @@ const section = document.createElement('section');
         },
       } = data;
   
-    document.querySelector('[data-athlete="NM372"]').appendChild(createHtml(NM372));
-    document.querySelector('[data-athlete="SV782"]').appendChild(createHtml(SV782));
+    document.querySelector('["NM372"]').appendChild(createHtml(NM372));
+    document.querySelector('["SV782"]').appendChild(createHtml(SV782));
 
    //................................................................................//
