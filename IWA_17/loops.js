@@ -30,7 +30,7 @@ const createArray = (length) => {
 //COMMAND
 const createData = () => {
     const current = new Date()
-    current.set(1)
+    current.setDate(1)
 /**
  * Set up the correct date formatting required as well as completed the loop index which displays
  * the week and day for different months of the calendar 
@@ -85,12 +85,12 @@ const createHtml = (data) => {
             const isWeekend = dayOfWeek === 1 || dayOfWeek === 7
             const isAlternate = week % 2 === 0
             
-		let classString = 'table__cell'
+		    let classString = 'table__cell'
 
-            if (isToday) classString = `${classString} table__cell_`
-            if (isWeekend) classString = `${classString} table__cell_`
-            if (isAlternate) classString = `${classString} table__cell_`
-            inner = addCell()
+            if (isToday) classString = `${classString} table__cell_today`
+            if (isWeekend) classString = `${classString} table__cell_weekend`
+            if (isAlternate) classString = `${classString} table__cell_alternate`
+            inner = addCell(inner, classString, value)
         }
 
         result = `
