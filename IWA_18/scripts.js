@@ -121,29 +121,11 @@ if (isOrder) {
     overlay.open = false;
     other.add.focus();
   }
+};
 //   if (isOrder) {
 //      edit.overlay.open = false;
 //      other.add.focus();
-//    } else {
-//     const orderData = createOrderData({
-//         title: title.value,
-//         table: table.value,
-//         column: COLUMNS[0],
-//     });
-
-//     state.orders[isOrder]; 
-
-//      if (orderData) {
-//         title.value = orderData.title;
-//         table.value = orderData.table;
-//         column.value = orderData.column
-//      }
-//      overlay.open = true;
-//    };
-
-//    title.focus();
-};
-//..............................................................................//
+//.................................................//
 const handleEditSubmit = (event) => {
     event.preventDefault();
     const {title, table, overlay, column} = edit
