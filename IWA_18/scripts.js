@@ -32,35 +32,24 @@ const handleDragOver = (event) => {
     updateDraggingHtml({ over: column })
 }
 //................................................................................//
-
 const handleDragStart = (event) => {
-    event.preventDefault();
-    const orderId = edit.target.value;
-    event.dataTransfer.setData(orderId);
+  state.dragging.source = event.target;
 };
+
 //................................................................................//
 const handleDragEnd = (event) => {
-    event.preventDefault();
-    const draggedOrderId = event.dataTransfer.getData(orderFromState); 
-    const selectedColumn = state.dragging.over; 
-    const orderFromState = state.orders[draggedOrderId];
+  const { id } = state.dragging.source.dataset;
+  const { over } = state.dragging;
+  const order = state.orders[id];
 
-    orderFromState.column = selectedColumn
+  // update state of order
+  order.column = over;
 
-    const newOrderHtml = createOrderHtml(orderFromState);
+  // move order to the relevant column
+  moveToColumn(id, over);
 
-    /**
-     * Updating where the order will be while doing this it will delete the previous
-     * location of where the order was, it clears it or rather resets the code that
-     * fires.
-     */
-    const prevOrderHtmlNode = document.querySelector(`[data-id="${draggedOrderId}"]`);
-    const prevColumn = prevOrderHtmlNode.dataset.area;
-    columns[prevColumn].removeChild(prevOrderHtmlNode);
-    columns[selectedColumn].appendChild(newOrderHtml);
-
-    //this will update the entire html in order to reflect where the order was moved to
-    updateDraggingHtml({ over: selectedColumn });
+  updateDragging({ over: null });
+  updateDraggingHtml({ over: null });
 };
 //...............................................................................//
 // const handleHelpToggle = (event) => {
