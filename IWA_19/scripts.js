@@ -155,7 +155,7 @@ const settingsButton = (event) => {
     const isCancel = event.target === settings["overlay-cancel"]
 
     if(isCancel) {
-        settings["theme-select"].value = setTheme
+        settings["theme-select"].value = state.theme
         settings.overlay.open = false;
     } else {
         settings.overlay.open = true;
