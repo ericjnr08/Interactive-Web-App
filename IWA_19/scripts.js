@@ -8,10 +8,14 @@ const fragment = document.createDocumentFragment()
 const extracted = books.slice(0, 36)
 /**
  * setting up book preview in order for the user to view a list of book previews, 
- * by title and author, so that user can discover new books to read.
+ * by title and author, so that user can discover new books to read. It will also have the 
+ * function of showing more books of the user scrolls down and advances further.
+ * 
+ * Please note that the bookPreview has been updated for the purpose of the presentation. I updated
+ * the authors[author] array of code.
  */
 const bookPreview = (book) => {
-    const {author: id, title, image, authorId} = book;
+    const {author, id, title, image,} = book;
     const preview = document.createElement('button')
     preview.classList.add('preview') 
     preview.setAttribute('data-preview', id)
@@ -22,7 +26,7 @@ const bookPreview = (book) => {
     />
     <div class="preview__info">
         <h3 class="preview__title">${title}</h3>
-        <div class="preview__author">${authors[authorId]}</div>
+        <div class="preview__author">${authors[author]}</div> 
     </div>
 `;
 return preview;
@@ -38,7 +42,11 @@ dataListItems.appendChild(fragment);
 
 
 //------------------------------------------------------------------//
-
+/**
+ * 
+ *  Allowing the user to select what they feel comfortable with reading.
+ * They get to filter down to specification of Book, author, and genre. 
+ */
 const handleToggleSearch = (event) => {
     event.preventDefault();
     const { button, overlay,} = getDOM.search;
@@ -54,7 +62,7 @@ const handleToggleSearch = (event) => {
 };
 
 const searchCancel = () => { 
-    DOM.search.overlay().open = false 
+    getDOM.search.overlay.open = true 
 }
 
 
@@ -72,7 +80,7 @@ const filter = (books, filters) => {
 
     for (const book of books) {
         const titleMatch = filters.title.trim() === '' && book.title.toLowerCase().includes(filters.title.toLowerCase())
-        const authorMatch = filters.author === 'any' || book.author === filters.author
+        const authorMatch = filters.author === 'any' || book.authors === filters.author
         let genreMatch = filters.genre === 'any'
 
         for (const singleGenre of book.genres) {
@@ -90,18 +98,7 @@ const filter = (books, filters) => {
 }
 
 //.........................................................................//
-const handleGenreFilter = (event) => {
-    const selectedGenre = event.target.value;
-    if (selectedGenre === 'any') {
-      loadListItems(books);
-    } else {
-      const filteredBooks = books.filter(book => book.genre === selectedGenre);
-      loadListItems(filteredBooks);
-    }
-  };
-
-//.........................................................................//
-const genreSearch = () => {
+const genresSearch = () => {
     const genreSelect = getDOM.search.genres
     const genreOptions = document.createElement('option')
     genreOptions.value = 'any'
@@ -109,22 +106,19 @@ const genreSearch = () => {
    
     for (const [id, genreName] of Object.entries(genres)) {
         const genreOption = document.createElement('option')
-
         genreOption.value = id;
         genreOption.innerText = genreName
         genreSelect.appendChild(genreOptions) 
     }
 }
 
-genreSearch()
-
+genresSearch()
 //...........................................................................//
 const authorSearch = () => {
     const authorSelect = getDOM.search.author;
     const authorsOptions = document.createElement('option');
     authorsOptions.value = 'any';
     authorsOptions.innerText = 'All Authors';
-    // authorSelect.appendChild(authorsOptions);
 
     for(const [id, authorName] of Object.entries(authors)) {
         const authorOption = document.createElement('option');
@@ -142,7 +136,7 @@ const submit = (event) => {
     const response = convertSubmit(event)
     const result = filter(books, response)
     actions.list.recreate(result)
-    DOM.search.overlay().open = false
+    DOM.search.overlay.open = false
 }
 
 const cancelButton = () => {
