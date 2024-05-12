@@ -1,3 +1,5 @@
+//@ts-check
+
 import { html, updateDraggingHtml, createOrderHtml, moveToColumn } from "./view.js";
 import { COLUMNS, createOrderData, updateDragging, state } from "./data.js";
 
@@ -12,7 +14,7 @@ const {add, other, help, edit, columns} = html
  * active dragging column is set in the `state` object in "data.js" and the HTML
  * is updated to reflect the new column.
  *
- * @param {Event} event 
+ * @param {object} event 
  */
 const handleDragOver = (event) => {
     event.preventDefault();
@@ -37,7 +39,7 @@ const handleDragStart = (event) => {
 };
 
 //................................................................................//
-const handleDragEnd = (event) => {
+const handleDragEnd = () => {
   const { id } = state.dragging.source.dataset;
   const { over } = state.dragging;
   const order = state.orders[id];
@@ -150,7 +152,7 @@ const handleEditSubmit = (event) => {
 
 }
 //.................................................................................//
-//(delete not working could be because we changed the orderData to orderFromState)
+
 const handleDelete = (event) => {
   const orderId = edit.id.value;
 
