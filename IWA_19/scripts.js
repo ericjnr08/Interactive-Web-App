@@ -1,5 +1,10 @@
+/**@ts-check */
+
 import {books, authors, genres, BOOKS_PER_PAGE,} from './data.js'
 import { getDOM, initialise, loadListItems, setTheme } from './views.js'
+
+const page = 1;
+const matches = books
 
 const {list, search, settings} = getDOM;
 //.................................................................//
@@ -10,9 +15,8 @@ const extracted = books.slice(0, 36)
  * setting up book preview in order for the user to view a list of book previews, 
  * by title and author, so that user can discover new books to read. It will also have the 
  * function of showing more books of the user scrolls down and advances further.
- * 
- * Please note that the bookPreview has been updated for the purpose of the presentation. I updated
- * the authors[author] array of code.
+ *
+ * @param {}
  */
 const bookPreview = (book) => {
     const {author, id, title, image,} = book;
@@ -98,6 +102,8 @@ const filter = (books, filters) => {
 }
 
 //.........................................................................//
+
+
 const genresSearch = () => {
     const genreSelect = getDOM.search.genres
     const genreOptions = document.createElement('option')
@@ -131,7 +137,7 @@ const authorSearch = () => {
 authorSearch();
 
 //..........................................................................//
-const submit = (event) => {
+const submitButton = (event) => {
     event.preventDefault()
     const response = convertSubmit(event)
     const result = filter(books, response)
@@ -144,6 +150,8 @@ const cancelButton = () => {
         getDOM.search.cancel.addEventListener('click', cancelButton)
     }
 }
+cancelButton();
+
 //..........................................................................//
 const settingsButton = (event) => { 
     const isCancel = event.target === settings["overlay-cancel"]
@@ -156,6 +164,8 @@ const settingsButton = (event) => {
     }
     getDOM.settings.overlay.open = true 
 }
+
+settingsButton();
 //...........................................................................//
 getDOM.search.button.addEventListener('click', handleToggleSearch)
 getDOM.search.genres.addEventListener('change', handleGenreFilter)

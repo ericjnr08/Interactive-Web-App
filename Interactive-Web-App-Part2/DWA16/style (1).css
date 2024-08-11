@@ -1,0 +1,23 @@
+.destination {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.destination-img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.destination-info {
+    max-width: 600px;
+}
+
+.destination-info h2 {
+    margin: 0;
+}
+
+.destination-info a {
+    color: blue;
+    text-decoration: none;
+}

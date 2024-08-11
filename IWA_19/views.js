@@ -1,5 +1,11 @@
 import { authors, genres } from './data.js'
 
+export const state = {
+    "extracted-books": [],
+    "books-per-page": BOOKS_PER_PAGE,
+    matches: [],
+};
+
 export const setTheme = {
     day: {
         dark: '10, 10, 20',
